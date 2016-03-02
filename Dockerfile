@@ -66,6 +66,7 @@ RUN echo "deb http://packages.erlang-solutions.com/ubuntu trusty contrib" >> /et
     esl-erlang \
     git \
     unzip \
+    mysql-client \
     build-essential \
     wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
