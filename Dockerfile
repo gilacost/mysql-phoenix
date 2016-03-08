@@ -84,5 +84,12 @@ RUN wget -q https://github.com/elixir-lang/elixir/releases/download/v1.2.3/Preco
 # Install local Elixir hex and rebar
 RUN /usr/local/bin/mix local.hex --force && \
     /usr/local/bin/mix local.rebar --force
+    
+# Configure & install NPM
+RUN wget https://deb.nodesource.com/node_5.x/pool/main/n/nodejs/nodejs_5.0.0-3nodesource1~trusty1_amd64.deb --no-check-certificate && \
+    dpkg -i nodejs_5.0.0-3nodesource1~trusty1_amd64.deb && \
+    rm nodejs_5.0.0-3nodesource1~trusty1_amd64.deb && \
+    echo "prefix = ${HOME}/.node" > ~/.npmrc && \
+    PATH="$HOME/.node/bin:$PATH"
 
 WORKDIR /
